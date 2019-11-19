@@ -1,0 +1,64 @@
+poop
+const int buttonPin = 2;  
+const int ledPinR =  9;
+const int ledPinG =  10;
+const int ledPinB =  11;
+int ir = 0;
+int ig = 0;
+
+int buttonState = 0;        
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPinR, OUTPUT);
+  pinMode(ledPinG, OUTPUT);
+  pinMode(ledPinB, OUTPUT);
+
+  pinMode(buttonPin, INPUT);
+}
+
+void turnongreen () {
+  while (ig<100) {
+    analogWrite(ledPinG, ig);
+    ig++;
+    delay(10);
+    }
+  }
+void turnoffgreen () {
+  while (ig>0) {
+    analogWrite(ledPinG, ig);
+    ig--;
+    delay(10);
+    }
+  }
+void greencycle () {
+  turnongreen();
+  turnoffgreen();
+}
+
+void turnonred () {
+  while (ir<100) {
+    analogWrite(ledPinR, ir);
+    ir++;
+    delay(20);
+    }
+  }
+void turnoffred () {
+  while (ir>0) {
+    analogWrite(ledPinR, ir);
+    ir--;
+    delay(20);
+    }
+  }
+
+  
+void loop(){
+  buttonState = digitalRead(buttonPin);
+    if (buttonState == HIGH) {
+      turnonred();
+      greencycle();
+    }
+    else {
+      turnoffgreen();
+      turnoffred();
+    }
+}
