@@ -10,8 +10,9 @@ const int buttonPin = 2;
 const int ledPinR =  9;
 const int ledPinG =  10;
 const int ledPinB =  11;
+int Light = 0;
+int m = 0;  
 
-       
 void setup() {
   Serial.begin(9600);
   pinMode(ledPinR, OUTPUT);
@@ -24,7 +25,23 @@ void setup() {
 
 
   
-void loop()
-{
-  
+void loop(){
+
+   while(Light<==1000){
+
+     if(Light % 3 == 0){
+       while(m <== 3){
+        digitalWrite(9, HIGH);
+        m++
+        delay(1000);
+       }
+     }else{
+        digitalWrite(11, HIGH);
+        m++
+        delay(4500);
+     }
+     digitalWrite(9, LOW);
+     digitalWrite(11, LOW);
+   }
+
 }
